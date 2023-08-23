@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+</head>
+<body>
+    {% if not hide_navbar %}
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="{{ url_for('classifier') }}">Fashion Items Classifier</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+                        <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+                    </div>
+
+                    <div class="navbar-nav">
+                        {% if current_user.is_authenticated %}
+                            <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        {% else %}
+                            <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                            <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+         <div class="content-section">
+    <div class="text-center mb-4">
+        <img src="{{ url_for('static', filename='images.png') }}" alt="Image" class="img-fluid">
+    </div>
+         </div>
+    </header>
+    {% endif %}
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Add this script at the bottom of your HTML code -->
+<script>
+    // Automatically hide flash messages after 5 seconds (5000 milliseconds)
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            var flashMessages = document.querySelectorAll('.alert');
+            flashMessages.forEach(function (message) {
+                message.style.display = 'none';
+            });
+        }, 5000);
+    });
+</script>
+ <div style="text-align: center;">
+<p style="font-style: italic; font-weight: bold; font-size: 24px; color: #008080;">We relish our future by embracing our past</p>
+
+</div>
+
+<div class="content-section text-left mt-5 ml-3" style="margin-top: 200px; padding-top: 100px;">
+    <div class="mb-4" style="display: flex; gap: 20px;">
+        <div>
+            <img src="{{ url_for('static', filename='photo1.png') }}" alt="Circle Image" class="rounded-circle img-fluid" width="350" height="350">
+            <!-- Adjust the width and height values as needed -->
+            <p style="text-align: left; padding-left: 40px; margin-top: 10px;">Learn more about our Goals!!</p>
+            <a href="https://aggiereuse.ucdavis.edu" class="btn btn-success" style="margin-left: 90px; background-color: #008080;">Who we are</a>
+        </div>
+        <div style="margin-top: -100px;">
+    <img src="{{ url_for('static', filename='classify.png') }}" alt="Image 2" class="rounded-circle img-fluid" width="500" height="500">
+    <!-- Adjust the width and height values as needed -->
+    <div style="text-align: left; padding-left: 190px;">
+    <p style="margin-top: -80px;">Explore our collection</p>
+</div>
+    <a href="{{ url_for('classifier') }}" class="btn btn-primary" style="margin-left: 230px; background-color: #008080">Classify</a>
+</div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
