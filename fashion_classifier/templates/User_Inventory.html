@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Include the Ionic icons stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@5.5.1/dist/ionicons.min.css">
+    <style>
+
+    body {
+            background: #800080;
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .icon-container img {
+            width: 50px; /* Adjust the width of the image */
+            height: 50px; /* Adjust the height of the image */
+        }
+
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">selectpage</a>
+    <div class="ml-auto">
+        <!-- Updated Back button with FontAwesome icon -->
+        <a class="btn btn-primary" href="{{ url_for('home') }}" onclick="history.back()">
+            <i class="fas fa-angle-double-left"></i> Back
+        </a>
+    </div>
+</nav>
+<!-- Example container with icon and content -->
+<div class="container">
+    <div class="icon-container">
+        <img src="{{ url_for('static', filename='icons8-tshirt-48.png') }}" alt="Icon">
+    </div>
+    <div class="content">
+        <h2>TSHIRT</h2>
+         {% if current_user.is_authenticated %}
+        <p>Total: {{ tshirt_count }}</p>
+
+        {% else %}
+            <p>Login required to view</p>
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="icon-container">
+        <img src="{{ url_for('static', filename='icons8-shirt-64.png') }}" alt="Icon">
+    </div>
+    <div class="content">
+        <h2>SHIRT</h2>
+         {% if current_user.is_authenticated %}
+        <p>Total: {{  shirt_count  }}</p>
+        {% else %}
+            <p>Login required to view</p>
+        {% endif %}
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="icon-container">
+        <img src="{{ url_for('static', filename='icons8-shorts-64.png') }}" alt="Icon">
+    </div>
+    <div class="content">
+        <h2>SHORTS</h2>
+         {% if current_user.is_authenticated %}
+        <p>Total: {{ shorts_count }}</p>
+        {% else %}
+            <p>Login required to view</p>
+        {% endif %}
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="icon-container">
+        <img src="{{ url_for('static', filename='icons8-pants-96.png') }}" alt="Icon">
+    </div>
+    <div class="content">
+        <h2>PANTS</h2>
+         {% if current_user.is_authenticated %}
+        <p>Total: {{ pants_count }}</p>
+        {% else %}
+            <p>Login required to view</p>
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="icon-container">
+        <img src="{{ url_for('static', filename='icons8-jackets-64.png') }}" alt="Icon">
+    </div>
+    <div class="content">
+        <h2>JACKETS</h2>
+         {% if current_user.is_authenticated %}
+        <p>Total: {{ jackets_count }}</p>
+        {% else %}
+            <p>Login required to view</p>
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="icon-container">
+        <img src="{{ url_for('static', filename='icons8-hats-96.png') }}" alt="Icon">
+    </div>
+    <div class="content">
+        <h2>CAPS</h2>
+         {% if current_user.is_authenticated %}
+        <p>Total: {{ caps_count }}</p>
+        {% else %}
+            <p>Login required to view</p>
+        {% endif %}
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

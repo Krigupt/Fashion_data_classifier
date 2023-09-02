@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Images</title>
+</head>
+<body>
+    <h1>Display Images</h1>
+
+    {% for item in clothing_items %}
+    <div>
+        <h2>Clothing Info</h2>
+        <p>Cloth Type: {{ item.cloth_type }}</p>
+        <p>Gender Type: {{ item.gender_type }}</p>
+        <p>Size Type: {{ item.size_type }}</p>
+        <p>Color: {{ item.color }}</p>
+    </div>
+    <div>
+        <h2>Image</h2>
+        <img src="data:image/jpeg;base64,{{ item.image_file }}" alt="Clothing Image">
+    </div>
+    <hr>
+    {% endfor %}
+
+</body>
+</html>
